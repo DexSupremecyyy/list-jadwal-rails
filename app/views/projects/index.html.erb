@@ -1,4 +1,4 @@
-<center><h2>List Project</h2></center>
+<center><h2>List Projek</h2></center>
 
 <%= link_to "Tambah Projek Baru", new_project_path, class: "btn btn-primary" %>
 
@@ -7,12 +7,12 @@
   <%# Looping Database%>
   <% @projects.each do |projek| %>
 
-  <div style="border: 3px solid <%= projek.status_warna %>; margin: 20px; padding: 10px 40px;">
+  <div class="project-card <%= projek.status_warna_border %>">
     <h3><%= projek.tittle %></h3>
     <p>Keterangan : <%= projek.description %></p>
     <p>Dimulai : <%= projek.created_at.to_date %> </p>
     <p>Deadline : <%= projek.deadline %></p>
-    <p style="color: <%= projek.status_warna %>;"> Status : <%= projek.status_text %></p>
+    <p class="<%= projek.status_warna_text %>"> Status : <%= projek.status_text %></p>
 
     <div class="flex">
       <%= link_to 'Detail Projek', project_path(projek), class: "btn btn-primary" %>

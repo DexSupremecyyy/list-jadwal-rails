@@ -8,16 +8,20 @@ class Project < ApplicationRecord
     deadline.present? && deadline < Date.today
   end
 
-  def hapus
-    
-  end
-
-  def status_warna
+  def status_warna_border
     if telat?
-      "red"
+      "border_merah"
     else
-      "green"
+      "border_hijau"
     end
+  end
+  
+  def status_warna_text
+    if telat?
+      "text_merah"
+    else
+      "text_hijau"
+    end    
   end
 
   def status_text
