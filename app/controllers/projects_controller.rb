@@ -63,10 +63,12 @@ class ProjectsController < ApplicationController
     def cek_token
       return unless request.format.json?
 
-      token = request.headers["X-Api-Token"] # Berfungsi agar kalo mau hit api gak bisa langsung di header browser, harus melewati terminal/postman
+      token = request.headers["X-Api-Token"]
+      secret_key = ENV["API_TOKEN"]
 
-      if token != "NjALp#"
-        render json: { error: "Dilarang Masuk"}, status: :unauthorized
+      # Kalau token kosong ATAU token gak cocok maka tidak di izinkan
+      if token.blank? || token != secret_key
+        render json: { error: "Dilarang Masuk" }, status: :unauthorized
       end
     end
 
