@@ -8,7 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 @keyframes hilang_otomatis {
   0% {
@@ -57,4 +59,9 @@
 .notif_sementara {
   animation: hilang_otomatis 4s forwards;
   overflow: hidden;
+}
+
+.btn_hapus {
+  padding: 10px;
+  font-size: medium;
 }

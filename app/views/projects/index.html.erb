@@ -9,14 +9,15 @@
 
   <div style="border: 3px solid <%= projek.status_warna %>; margin: 20px; padding: 10px 40px;">
     <h3><%= projek.tittle %></h3>
-    <p ">Keterangan : <%= projek.description %></p>
+    <p>Keterangan : <%= projek.description %></p>
+    <p>Dimulai : <%= projek.created_at.to_date %> </p>
     <p>Deadline : <%= projek.deadline %></p>
     <p style="color: <%= projek.status_warna %>;"> Status : <%= projek.status_text %></p>
 
-    <div>
+    <div class="flex">
       <%= link_to 'Detail Projek', project_path(projek), class: "btn btn-primary" %>
       <%= link_to 'Edit Projek', edit_project_path(projek), class: "btn btn-primary" %>
-      <%= button_to 'Delete', delete_button_path, method: :delete %>
+      <%= button_to 'Delete', project_path(projek), method: :delete, class: "btn btn-primary btn_hapus" %>
     </div>
   </div>
 <% end %>

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :cek_token
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json
@@ -58,6 +59,17 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def cek_token
+      return unless request.format.json?
+
+      token = request.headers["X-Api-Token"] # Berfungsi agar kalo mau hit api gak bisa langsung di header browser, harus melewati terminal/postman
+
+      if token != "NjALp#"
+        render json: { error: "Dilarang Masuk"}, status: :unauthorized
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params.expect(:id))
