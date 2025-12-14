@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  before_action :cek_token
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json
@@ -46,18 +45,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-    def cek_token
-      return unless request.format.json?
-
-      token = request.headers["X-Api-Token"]
-      secret_key = ENV["API_TOKEN"]
-
-      # Kalau token kosong ATAU token gak cocok maka tidak di izinkan
-      if token.blank? || token != secret_key
-        render json: { error: "Dilarang Masuk" }, status: :unauthorized
-      end
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_project
