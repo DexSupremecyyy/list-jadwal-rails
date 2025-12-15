@@ -1,23 +1,52 @@
-<center><h2>List Projek</h2></center>
+<center><h1>List Project</h1></center>
 
-<%= link_to "Tambah Projek Baru", new_project_path, class: "btn btn-primary" %>
 
-<div id="-project-container">
+<div class="border_main">
+  <% @projects.each do |project| %> 
+    <div class="project_card <%= project.status_warna_border %>"> 
 
-  <%# Looping Database%>
-  <% @projects.each do |projek| %>
+      <h3 class="tittle-card">
+        <%= project.tittle %>
+      </h3>
 
-  <div class="project-card <%= projek.status_warna_border %>">
-    <h3><%= projek.tittle %></h3>
-    <p>Keterangan : <%= projek.description %></p>
-    <p>Dimulai : <%= projek.created_at.to_date %> </p>
-    <p>Deadline : <%= projek.deadline %></p>
-    <p class="<%= projek.status_warna_text %>"> Status : <%= projek.status_text %></p>
+      <div class="card_content">
+        <div class="description_box ">
+          <strong>Description : </strong>
+          <div class="description_content">
+              <p><%= project.description %></p>
+          </div>
+        </div>
 
-    <div class="flex">
-      <%= link_to 'Detail Projek', project_path(projek), class: "btn btn-primary" %>
-      <%= link_to 'Edit Projek', edit_project_path(projek), class: "btn btn-primary" %>
-      <%= button_to 'Delete', project_path(projek), method: :delete, class: "btn btn-primary btn_hapus" %>
+        <p><strong>Start : 
+          <%= project.created_at.to_date %> 
+          </strong>
+        </p>
+        <p>
+          <strong>Deadline : 
+            <%= project.deadline %> 
+          </strong>
+        </p>
+        <p>
+          <strong>Status : 
+            <span class="<%= project.status_warna_text %>">
+              <%= project.status_text %>
+            </span>
+          </strong>
+        </p>
+
+        <div class="button-container flex">
+          <%= link_to 'Edit', edit_project_path(project), class: "btn btn-primary" %>
+          <%= link_to 'Detail Project', project_path(project), class: "btn btn-primary" %>
+          <%= button_to 'X', project_path(project), method: :delete, class: "btn btn-primary btn_hapus" %>
+        </div>
+      </div>
     </div>
+  <% end %>
+
+</div>
+
+<center>
+  <div class="button_create">
+    <%= link_to 'CREATE PROJECT', new_project_path, class: "btn btn-primary " %>
   </div>
-<% end %>
+</center>

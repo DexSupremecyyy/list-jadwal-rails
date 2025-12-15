@@ -8,8 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-* {
+body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(211, 211, 211);
 }
 
 @keyframes hilang_otomatis {
@@ -35,8 +36,8 @@
 }
 
 .btn {
-  display: inline-block;
-  padding: 8px 5px;
+  /* display: inline-block; */
+  padding: 8px 20px;
   margin: 10px;
   text-decoration: none;
   border-radius: 10px;
@@ -51,9 +52,14 @@
   border: 1px solid black ;
 }
 
+.btn-primary:hover {
+  background-color: rgb(129, 122, 184);
+}
+
 .flex {
   display: flex;
   margin: 10px;
+  justify-content: end;
 }
 
 .notif_sementara {
@@ -62,21 +68,19 @@
 }
 
 .btn_hapus {
-  padding: 10px;
+  padding: 10px 20px;
   font-size: medium;
+  color: red;
 }
 
-.project-card {
-  margin: 20px;
-  padding: 10px 40px;
-  border: 3px solid; /* Default solid */
-}
 
 .border_merah {
+  border: 2px solid;
   border-color: rgb(255, 0, 0);
 }
 
 .border_hijau {
+  border: 2px solid;
   border-color: rgb(34, 255, 0);
 }
 
@@ -86,4 +90,65 @@
 
 .text_hijau {
   color: rgb(37, 197, 13);
+}
+
+.border_main {
+  border: 4px solid black;
+  background-color: rgb(237, 236, 255); 
+  padding: 40px;           /* <-- Jarak antara garis kotak sama isi dalemnya */
+  max-width: 560px;        /* <-- Lebar maksimal kotak biar gak melebar se-layar */
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin: 0 auto;          /* <-- Biar kotaknya ada di tengah-tengah layar */
+  border-radius: 10px;
+  position: sticky;
+}
+
+.project_card {
+  /* border: 3px solid; */
+  margin: 20px;
+  padding: 30px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.tittle-card {
+  font-size: 26px;
+}
+
+.description_box {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.description_content {
+  /* margin-top: 6px; */
+  font-size: medium;
+  /* white-space: pre-wrap;      */
+  word-wrap: break-word;   
+  overflow-wrap: break-word;
+  word-break: break-word;   
+  max-height: 30px;         
+  max-width: 500px;
+  overflow-y: auto;
+  /* Sembunyiin Scrollbar (Firefox) */
+  scrollbar-width: none;  
+  /* Sembunyiin Scrollbar (IE & Edge) */
+  -ms-overflow-style: none;
+}
+
+.description_content p {
+  font-size: small;
+}
+
+.description-content::-webkit-scrollbar {
+  display: none;
+}
+
+.button_create {
+  margin: 20px;
 }

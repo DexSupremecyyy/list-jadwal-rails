@@ -17,18 +17,18 @@ module Api # Wajib di bungkus module api karena kode ini berada di dalam folder 
       # A : untuk Project itu adalah model yang isinya adalah tabel plular(banyak data) yaitu tabel projects
       # Project = Model yang berisi tabel projects
       # projects = tabel bernama projects 
-      @project = Project.all # Untuk Project.all itu perintah Active Record (ORM) buat bilang ke SQL: "SELECT * FROM projects".
+      @projects = Project.all # Untuk Project.all itu perintah Active Record (ORM) buat bilang ke SQL: "SELECT * FROM projects".
 
 
       # Ini untuk merender menjadi format json dengan ngambil data dari variable @project
       # untuk yang status: :ok fungsi nya untuk megirimkan status sukses dengan kode 200(sukses)
-      render json: @project, status: :ok 
+      render json: @projects, status: :ok 
     end
 
     # Method Show(READ)
     def show
-      if @project # Jika ada data dari projek
-        render json: @project, status: :ok # Maka akan merender data dengan format json 
+      if @projects # Jika ada data dari projek
+        render json: @projects, status: :ok # Maka akan merender data dengan format json 
       else # Jika tidak menemukan data
         render json: { error: "Data Tidak Ditemukan" }, status: :not_found # Menampilkan output error dengan format json
       end
@@ -36,34 +36,34 @@ module Api # Wajib di bungkus module api karena kode ini berada di dalam folder 
 
     # Method Crete(New)
     def create
-      @project = Project.new(project_params) # Variable @project ini berisi perintah untuk : Membuat record(baris data) baru di table projects dengan mengambil data dari method project_params yang ada di bawah(Dia ngambil data seperti tittle, description, deadline)
+      @projects = Project.new(project_params) # Variable @project ini berisi perintah untuk : Membuat record(baris data) baru di table projects dengan mengambil data dari method project_params yang ada di bawah(Dia ngambil data seperti tittle, description, deadline)
 
-      if @project.save # Jika @project tersimpan?
-        render json: @project, status: :created # Maka akan menampilkan data dari @project dengan format json beserta status 201(created)
+      if @projects.save # Jika @project tersimpan?
+        render json: @projects, status: :created # Maka akan menampilkan data dari @project dengan format json beserta status 201(created)
       else
-        render json: { error: @project.errors.full_messages }, status: :unprocessable_entity
+        render json: { error: @projects.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
     # Method Update(Edit)
     def update
-      return render json: { error: "Project Not Found ❌" }, status: :not_found unless @project # Melakukan pengecekan jika data dari variable @project tidak ada, maka dia akan menampilkan Error notfound, (unless) kecuali jika ada maka akan melanjutkan perintah yang ada di bawah 
+      return render json: { error: "Project Not Found ❌" }, status: :not_found unless @projects # Melakukan pengecekan jika data dari variable @project tidak ada, maka dia akan menampilkan Error notfound, (unless) kecuali jika ada maka akan melanjutkan perintah yang ada di bawah 
       # Return = menendang/mengembalikan/menghentikan untuk melanjutkan perintah di bawah nya(masih di dalam method ya)
 
       
-      if @project.update(project_params) # jika project melakukan update dengan mengambil data dari method project_params
-        render json: { message: "Edit Success ✅", data: @project}, status: :ok # maka akan menampilkan success
+      if @projects.update(project_params) # jika project melakukan update dengan mengambil data dari method project_params
+        render json: { message: "Edit Success ✅", data: @projects}, status: :ok # maka akan menampilkan success
       else # Jika tidak maka akan menampilkan error
-        render json: { error: @project.errors.full_messages }, status: :unprocessable_entity
+        render json: { error: @projects.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
 
     # Method Delete
     def destroy
-      return render json: { error: "Project Not Found ❌"}, status: :not_found unless @project # Melakukan pengecekan jika data dari variable @project tidak ada, maka dia akan menampilkan Error notfound, (unless) kecuali jika ada maka akan melanjutkan perintah yang ada di
+      return render json: { error: "Project Not Found ❌"}, status: :not_found unless @projects # Melakukan pengecekan jika data dari variable @project tidak ada, maka dia akan menampilkan Error notfound, (unless) kecuali jika ada maka akan melanjutkan perintah yang ada di
 
-      @project.destroy
+      @projects.destroy
       head :no_content # Untuk menampilkan sukses di header 204
     end
 
@@ -84,7 +84,7 @@ module Api # Wajib di bungkus module api karena kode ini berada di dalam folder 
 
     # Method untuk mencari project menggunakan parameter id
     def set_project
-      @project = Project.find_by(id: params[:id]) # variable @project = data dari table projects di cari menggunakan parameter ID
+      @projects = Project.find_by(id: params[:id]) # variable @project = data dari table projects di cari menggunakan parameter ID
     end
 
     # Method untuk mengatur format .json menjadi sesuai yang di inginkan (Untuk yang ingin test di postman)
