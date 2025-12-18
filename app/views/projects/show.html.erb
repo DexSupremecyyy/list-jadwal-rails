@@ -1,10 +1,50 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+<div class="border_main">
+  <center>
+  <h1>
+    <%= @project.tittle %>
+  </h1>    
+  </center>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+  <div>
+    <div class="created_at">
+      <strong>Started : </strong>
+      <span>
+        <%= @project.created_at.to_date %>
+      </span>
+    </div>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+    <div class="deadline">
+      <strong>Deadline : </strong>
+      <span>
+        <%= @project.deadline %>
+      </span>
+    </div>
+
+    <div class="status">
+      <strong>Status : </strong>
+      <span class="<%= @project.status_warna_text %>">
+        <%= @project.status_text %>
+      </span>
+    </div>
+  </div>
+
+  <div class="description_border">
+    <h3>Description :</h3>
+    <p>
+      <%= @project.description %>
+    </p>
+  </div>
+
+
+
+  <div>
+    <%= link_to "Edit this project", edit_project_path(@project) %> |
+    <%= link_to "Back to projects", projects_path %>
+
+    <%= button_to "Destroy this project", @project, method: :delete %>
+  </div>
+
 </div>
+
