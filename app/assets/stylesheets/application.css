@@ -41,6 +41,11 @@ body {
   }
 }
 
+hr {
+  border-top: 2px solid black; /* Ganti jadi garis hitam tebal */
+  margin: 20px 0;           /* Kasih jarak atas bawah biar gak nempel */
+}
+
 .btn {
   /* display: inline-block; */
   padding: 8px 20px;
@@ -53,13 +58,14 @@ body {
 }
 
 .btn-primary {
-  background-color: rgb(149, 141, 212);
+  background-color: rgb(0, 0, 0);
   color: white;
   border: 1px solid black ;
 }
 
 .btn-primary:hover {
-  background-color: rgb(129, 122, 184);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .flex {
@@ -76,7 +82,7 @@ body {
 .btn_hapus {
   padding: 10px 20px;
   font-size: medium;
-  color: red;
+  color: red; 
 }
 
 
@@ -215,3 +221,11 @@ body {
   position: relative;
   border-radius: 7px;
 }
+
+.detail_content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  gap: 27px;
+}
+

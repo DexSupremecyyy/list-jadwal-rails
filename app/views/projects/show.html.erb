@@ -1,13 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="border_main">
+  <div class="detail_content">
   <center>
-  <h1>
+  <h1 style="margin-top: 0;">
     <%= @project.tittle %>
   </h1>    
+  <hr>
   </center>
 
-  <div>
+
+  <div class="detail_content">
     <div class="created_at">
       <strong>Started : </strong>
       <span>
@@ -24,7 +27,7 @@
 
     <div class="status">
       <strong>Status : </strong>
-      <span class="<%= @project.status_warna_text %>">
+      <span class="<%= @project.status_warna_text %>" style="font-weight: bold;">
         <%= @project.status_text %>
       </span>
     </div>
@@ -36,14 +39,15 @@
       <%= @project.description %>
     </p>
   </div>
+</div>
 
 
 
-  <div>
-    <%= link_to "Edit this project", edit_project_path(@project) %> |
-    <%= link_to "Back to projects", projects_path %>
+  <div style="display: flex; ">
+    <%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-primary" %>
+    <%= link_to "Back to projects", projects_path, class: "btn btn-primary" %>
 
-    <%= button_to "Destroy this project", @project, method: :delete %>
+    <%= button_to "Delete", @project, method: :delete, class: "btn btn-primary btn_hapus" %>
   </div>
 
 </div>
