@@ -1,11 +1,14 @@
 <% content_for :title, "New project" %>
 
-<h1>New project</h1>
 
-<%= render "form", project: @project %>
+<center><h1>New Project</h1></center>
 
-<br>
+<div class="border_main">
+  <%= render "form", project: @project %>
 
-<div>
-  <%= link_to "Back to projects", projects_path %>
+  <br>
+
+  <div>
+    <%= link_to "← Back", projects_path, class: "btn btn-primary", style: "margin-left: 0;  "%>
+  </div>
 </div>
