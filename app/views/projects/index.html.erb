@@ -2,6 +2,9 @@
 
 
 <div class="border_main">
+  <% if @projects.blank? %>
+    <h2>Data Not Found</h2>
+  <% else %>
   <% @projects.each do |project| %> 
     <div class="project_card <%= project.status_warna_border %>"> 
 
@@ -34,7 +37,7 @@
               <p><%= project.description %></p>
           </div>
         </div>
-        
+
         <div class="button-container flex">
           <%= link_to 'Edit', edit_project_path(project), class: "btn btn-primary" %>
           <%= link_to 'Detail Project', project_path(project), class: "btn btn-primary" %>
@@ -43,7 +46,8 @@
       </div>
     </div>
   <% end %>
-
+  
+<% end %>
 </div>
 
 <center>
