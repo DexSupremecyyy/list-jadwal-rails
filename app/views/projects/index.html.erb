@@ -3,7 +3,7 @@
 
 <div class="border_main">
   <% if @projects.blank? %>
-    <h2>Data Not Found</h2>
+    <h2 class="not_found_text">Data Not Found</h2>
   <% else %>
   <% @projects.each do |project| %> 
     <div class="project_card <%= project.status_warna_border %>"> 
